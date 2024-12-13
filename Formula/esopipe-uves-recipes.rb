@@ -1,6 +1,6 @@
 class EsopipeUvesRecipes < Formula
   desc "ESO UVES instrument pipeline (recipe plugins)"
-  homepage "https://www.eso.org/sci/software/pipelines/"
+  homepage "https://ftp.eso.org/pub/dfs/pipelines/repositories/stable/fedora/39/x86_64/esopipe-uves/"
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
   sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
   license "GPL-2.0-or-later"
@@ -8,7 +8,7 @@ class EsopipeUvesRecipes < Formula
 
   livecheck do
     url :homepage
-    regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
+    regex(/href=.*?esopipe-uves-(\d+(?:[.-]\d+)+)\.f/i)
   end
 
   depends_on "pkg-config" => :build
