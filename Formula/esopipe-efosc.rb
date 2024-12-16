@@ -11,10 +11,10 @@ class EsopipeEfosc < Formula
 
   livecheck do
     url :homepage
-    regex(/href=.*?#{pipeline}-kit-(\d+(?:[.-]\d+)+)\.t/i)
+    regex(/href=.*?efosc-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
-  depends_on "esopipe-#{pipeline}-recipes"
+  depends_on "esopipe-efosc-recipes"
 
   def install
     system "tar", "xf", "#{pipeline}-calib-#{version.major_minor_patch}.tar.gz"
