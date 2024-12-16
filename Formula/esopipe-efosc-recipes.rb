@@ -5,7 +5,6 @@ class EsopipeEfoscRecipes < Formula
   sha256 "515a11ddaa6f71d2ebcfff91433b782089f93af5fb7ce3daf973ccfb456f9bba"
   license "GPL-2.0-or-later"
 
-
   def name_version
     "efosc-#{version.major_minor_patch}"
   end
@@ -21,7 +20,6 @@ class EsopipeEfoscRecipes < Formula
   uses_from_macos "curl"
 
   def install
-
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
