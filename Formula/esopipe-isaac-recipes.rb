@@ -5,6 +5,14 @@ class EsopipeIsaacRecipes < Formula
   sha256 "bed2508b8a06cf943b93ca6f2078a55c8e8acec33c92dfc5aa297d5e8f1483a5"
   license "GPL-2.0-or-later"
 
+  bottle do
+    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-isaac-recipes-6.2.5-1"
+    sha256 cellar: :any,                 arm64_sequoia: "4a4983fe354e7dbe0017c202dc0611c0c073b6957d8ea37f1ff6f7a951cfd5df"
+    sha256 cellar: :any,                 arm64_sonoma:  "5b73d44ce42f822739b73dcc6ab5838bc541cad8cbaeedda0afda184762229eb"
+    sha256 cellar: :any,                 ventura:       "7eacbcc0ed71e5b6934bcfea8e7b9dbd752a356580b4e5a62d0dfa76120f6c37"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "faa96d65a0b2f697f6bbf4cf67401c86f6f2a72a767651bdb16d713c17f4e578"
+  end
+
   def name_version
     "isaac-#{version.major_minor_patch}"
   end
