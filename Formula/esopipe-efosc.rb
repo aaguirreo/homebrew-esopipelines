@@ -5,6 +5,11 @@ class EsopipeEfosc < Formula
   sha256 "515a11ddaa6f71d2ebcfff91433b782089f93af5fb7ce3daf973ccfb456f9bba"
   license "GPL-2.0-or-later"
 
+  livecheck do
+    url :homepage
+    regex(/href=.*?efosc-kit-(\d+(?:[.-]\d+)+)\.t/i)
+  end
+
   bottle do
     root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-efosc-2.3.9-2"
     sha256 cellar: :any_skip_relocation, arm64_sequoia: "c09faf650875dcd39980f3b3610ee2ee4799f5748b7df8ccea5924f54152e483"
@@ -15,11 +20,6 @@ class EsopipeEfosc < Formula
 
   def pipeline
     "efosc"
-  end
-
-  livecheck do
-    url :homepage
-    regex(/href=.*?efosc-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "esopipe-efosc-recipes"
