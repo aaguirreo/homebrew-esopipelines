@@ -5,6 +5,11 @@ class EsopipeIsaacRecipes < Formula
   sha256 "bed2508b8a06cf943b93ca6f2078a55c8e8acec33c92dfc5aa297d5e8f1483a5"
   license "GPL-2.0-or-later"
 
+  livecheck do
+    url :homepage
+    regex(/href=.*?isaac-kit-(\d+(?:[.-]\d+)+)\.t/i)
+  end
+
   bottle do
     root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-isaac-recipes-6.2.5-1"
     sha256 cellar: :any,                 arm64_sequoia: "4a4983fe354e7dbe0017c202dc0611c0c073b6957d8ea37f1ff6f7a951cfd5df"
@@ -15,11 +20,6 @@ class EsopipeIsaacRecipes < Formula
 
   def name_version
     "isaac-#{version.major_minor_patch}"
-  end
-
-  livecheck do
-    url :homepage
-    regex(/href=.*?isaac-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "pkgconf" => :build
