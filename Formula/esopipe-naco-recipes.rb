@@ -5,6 +5,14 @@ class EsopipeNacoRecipes < Formula
   sha256 "999ed3bbd574f0821e0c00d8d51e41aff14c9ebf4cea586c642b8da5e048e383"
   license "GPL-2.0-or-later"
 
+  bottle do
+    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-naco-recipes-4.4.13-1"
+    sha256 cellar: :any,                 arm64_sequoia: "b959a9cd71eed44c9fdcb8b02f5a0eafffdd0439dab2e6598c6a66380caca2c2"
+    sha256 cellar: :any,                 arm64_sonoma:  "6cf669ebab6ef707d46a5ec3784533f5af3d1ceaf42010120188f27bbb514ce5"
+    sha256 cellar: :any,                 ventura:       "be19826f57efeaec73d7a141e31ca178b5957115c6df2aba9dc643d725e0905f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e2a0bb0d479c7bf59ae636090d67188ef33adf02f2743b33525d06b7a5c19bec"
+  end
+
   def name_version
     "naco-#{version.major_minor_patch}"
   end
