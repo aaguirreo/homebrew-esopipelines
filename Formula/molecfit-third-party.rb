@@ -14,6 +14,12 @@ class MolecfitThirdParty < Formula
 
   def install
     ENV.deparallelize
+
+    ENV["CC"] = Formula["gcc"].opt_bin/"gcc-14"
+    ENV["FC"] = Formula["gcc"].opt_bin/"gfortran-14"
+    ENV.append "CFLAGS", "-O2 -march=native"
+    ENV.append "FCFLAGS", "-O2 -march=native"
+
     # ENV.append "LDFLAGS", "-L#{Formula["gcc"].opt_lib}/gcc/current"
     # ENV.append "CFLAGS", "-I#{Formula["gcc"].opt_include}"
 
