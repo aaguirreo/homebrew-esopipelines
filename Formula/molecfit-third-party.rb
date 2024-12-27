@@ -14,10 +14,7 @@ class MolecfitThirdParty < Formula
 
   def install
     ENV.deparallelize
-
     system "make", "-f", "BuildThirdParty.mk",
-      "CC=#{Formula["gcc"].bin}/gcc-14",
-      "FC=#{Formula["gcc"].bin}/gfortran-14",
       "prefix=#{prefix}",
       "install"
   end
