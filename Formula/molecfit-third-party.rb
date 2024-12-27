@@ -10,20 +10,20 @@ class MolecfitThirdParty < Formula
     regex(/href=.*?molecfit_third_party[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
-  depends_on "gcc" => :build
+  depends_on "gfortran" => :build
 
   def install
     ENV.deparallelize
-    ENV.append "LDFLAGS", "-L#{Formula["gcc"].opt_lib}/gcc/current"
-    ENV.append "CFLAGS", "-I#{Formula["gcc"].opt_include}"
+    #ENV.append "LDFLAGS", "-L#{Formula["gcc"].opt_lib}/gcc/current"
+    #ENV.append "CFLAGS", "-I#{Formula["gcc"].opt_include}"
 
     system "tar", "-xf", cached_download.to_s, "-C", buildpath
     cd "molecfit_third_party-#{version}" do
       system "make", "-f", "BuildThirdParty.mk",
-             "FC=#{Formula["gcc"].bin}/gfortran-14",
+             "gfortran",
              "prefix=#{prefix}"
       system "make", "-f", "BuildThirdParty.mk",
-             "FC=#{Formula["gcc"].bin}/gfortran-14",
+             "gfortran",
              "prefix=#{prefix}",
              "install"
     end
