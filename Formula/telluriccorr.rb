@@ -20,7 +20,6 @@ class Telluriccorr < Formula
   end
 
   depends_on "cpl@7.3.2"
-  depends_on "molecfit-third-party"
 
   # Fix -flat_namespace being used on Big Sur and later.
   patch do
@@ -32,7 +31,6 @@ class Telluriccorr < Formula
     system "./configure", "--prefix=#{prefix}",
                           "--with-cpl=#{Formula["cpl@7.3.2"].prefix}"
     system "make", "install"
-    ln_s "#{Formula["molecfit-third-party"].share}/molecfit/data/hitran", "#{share}/molecfit/data/"
   end
 
   test do
