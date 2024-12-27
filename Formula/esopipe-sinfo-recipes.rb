@@ -20,11 +20,14 @@ class EsopipeSinfoRecipes < Formula
   depends_on "esorex"
   depends_on "gsl@2.6"
 
+  uses_from_macos "curl"
+
   def install
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
                             "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-curl=#{Formula["curl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-gsl=#{Formula["gsl@2.6"].prefix}"
       system "make", "install"
