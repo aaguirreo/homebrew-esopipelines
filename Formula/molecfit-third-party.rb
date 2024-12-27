@@ -15,21 +15,15 @@ class MolecfitThirdParty < Formula
   def install
     ENV.deparallelize
 
-    ENV["CC"] = Formula["gcc"].opt_bin/"gcc-14"
-    ENV["FC"] = Formula["gcc"].opt_bin/"gfortran-14"
-    ENV.append "CFLAGS", "-O2 -march=native"
-    ENV.append "FCFLAGS", "-O2 -march=native"
-
-    # ENV.append "LDFLAGS", "-L#{Formula["gcc"].opt_lib}/gcc/current"
-    # ENV.append "CFLAGS", "-I#{Formula["gcc"].opt_include}"
-
     system "tar", "-xf", cached_download.to_s, "-C", buildpath
     cd "molecfit_third_party-#{version}" do
       system "make", "-f", "BuildThirdParty.mk",
-             "FC=gfortran",
+             "CC=#{Formula["gcc"].bin}/gcc-14",
+              "FC=#{Formula["gcc"].bin}/gfortran-14",
              "prefix=#{prefix}"
       system "make", "-f", "BuildThirdParty.mk",
-             "FC=gfortran",
+             "CC=#{Formula["gcc"].bin}/gcc-14",
+             "FC=#{Formula["gcc"].bin}/gfortran-14",
              "prefix=#{prefix}",
              "install"
     end
