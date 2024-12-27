@@ -40,6 +40,6 @@ jobs:
           name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
 
-      - name: Setup tmate session
-        if: success() || failure()
-        uses: mxschmitt/action-tmate@v3
+      #- name: Setup tmate session
+      #  if: success() || failure()
+      #  uses: mxschmitt/action-tmate@v3
