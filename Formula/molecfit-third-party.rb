@@ -9,7 +9,7 @@ class MolecfitThirdParty < Formula
     url "https://ftp.eso.org/pub/dfs/pipelines/libraries/molecfit_third_party/"
     regex(/href=.*?molecfit_third_party[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
-  
+
   depends_on "gfortran" => :build
 
   def install
