@@ -18,11 +18,9 @@ class MolecfitThirdParty < Formula
     system "tar", "-xf", cached_download.to_s, "-C", buildpath
     cd "molecfit_third_party-#{version}" do
       system "make", "-f", "BuildThirdParty.mk",
-             "CC=#{Formula["gcc"].bin}/gcc-14",
              "FC=#{Formula["gcc"].bin}/gfortran-14",
              "prefix=#{prefix}"
       system "make", "-f", "BuildThirdParty.mk",
-             "CC=#{Formula["gcc"].bin}/gcc-14",
              "FC=#{Formula["gcc"].bin}/gfortran-14",
              "prefix=#{prefix}",
              "install"
