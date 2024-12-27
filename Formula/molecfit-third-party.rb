@@ -10,24 +10,20 @@ class MolecfitThirdParty < Formula
     regex(/href=.*?molecfit_third_party[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
-  depends_on "gfortran" => :build
+  depends_on "gcc" => :build
 
   def install
     ENV.deparallelize
-    lnfl_target = "customOsxGNUsgl"
-    lblrtm_target = "customOsxGNUsgl"
 
     system "tar", "-xf", cached_download.to_s, "-C", buildpath
     cd "molecfit_third_party-#{version}" do
       system "make", "-f", "BuildThirdParty.mk",
+             "CC=#{Formula["gcc"].bin}/gcc-14",
              "FC=#{Formula["gcc"].bin}/gfortran-14",
-             "lnfl_target=#{lnfl_target}",
-             "lblrtm_target=#{lblrtm_target}",
              "prefix=#{prefix}"
       system "make", "-f", "BuildThirdParty.mk",
+             "CC=#{Formula["gcc"].bin}/gcc-14",
              "FC=#{Formula["gcc"].bin}/gfortran-14",
-             "lnfl_target=#{lnfl_target}",
-             "lblrtm_target=#{lblrtm_target}",
              "prefix=#{prefix}",
              "install"
     end
