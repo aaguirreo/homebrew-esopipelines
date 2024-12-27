@@ -14,6 +14,8 @@ class MolecfitThirdParty < Formula
 
   def install
     ENV.deparallelize
+    ENV.append "LDFLAGS", "-L#{Formula["gcc"].opt_lib}/gcc/current"
+    ENV.append "CFLAGS", "-I#{Formula["gcc"].opt_include}"
 
     system "tar", "-xf", cached_download.to_s, "-C", buildpath
     cd "molecfit_third_party-#{version}" do
