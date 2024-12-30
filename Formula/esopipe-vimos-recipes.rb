@@ -5,6 +5,14 @@ class EsopipeVimosRecipes < Formula
   sha256 "e4394926ada4e5f59be3de67d56630bf113943d2398298a8f2b7abf1e908de4e"
   license "GPL-2.0-or-later"
 
+  bottle do
+    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-vimos-recipes-4.1.10"
+    sha256 cellar: :any,                 arm64_sequoia: "48c1208a65b37a5f2847f7794bed3c30b208b1580b210f810a91859b8044f7ca"
+    sha256 cellar: :any,                 arm64_sonoma:  "424a9a36b379eb65d6ec8b23f3354ce8c3167a61233ce9e302b5f84e1aaff13c"
+    sha256 cellar: :any,                 ventura:       "298d792e4dc27127b13d013c7b88c98ee6bfe8ab35411aa034d6a546fd917432"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ff19b62281b5b3c3ecf48a55e6cdc5ef61f189f8a5cee2780b5ee78dcf7f842c"
+  end
+
   def name_version
     "vimos-#{version.major_minor_patch}"
   end
