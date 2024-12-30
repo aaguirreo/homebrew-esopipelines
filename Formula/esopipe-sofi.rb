@@ -5,6 +5,11 @@ class EsopipeSofi < Formula
   sha256 "ce0fc266650c962291f0ce07fc32b687703fed6c6440a68114022d47c96b165e"
   license "GPL-2.0-or-later"
 
+  livecheck do
+    url :homepage
+    regex(/href=.*?sofi-kit-(\d+(?:[.-]\d+)+)\.t/i)
+  end
+
   bottle do
     root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-sofi-1.5.16"
     sha256 cellar: :any_skip_relocation, arm64_sequoia: "c14f518121b469f8116a9ad0777da7b53c1ec33ed97676e5f9fbc8d11b9c4f94"
@@ -15,11 +20,6 @@ class EsopipeSofi < Formula
 
   def pipeline
     "sofi"
-  end
-
-  livecheck do
-    url :homepage
-    regex(/href=.*?sofi-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "esopipe-sofi-recipes"
