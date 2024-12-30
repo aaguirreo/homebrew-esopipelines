@@ -5,6 +5,11 @@ class EsopipeSinfoRecipes < Formula
   sha256 "15e124020ff7592b6201e13cc40563055050e123857f7cb4fb982e2423db187e"
   license "GPL-2.0-or-later"
 
+  livecheck do
+    url :homepage
+    regex(/href=.*?sinfo-kit-(\d+(?:[.-]\d+)+)\.t/i)
+  end
+
   bottle do
     root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-sinfo-recipes-3.3.5-1"
     sha256 cellar: :any,                 arm64_sequoia: "b2d5d2c74f7e3ae1d53e69f92f86f966a952e71f76078d2c7b711467ab38e26a"
@@ -15,11 +20,6 @@ class EsopipeSinfoRecipes < Formula
 
   def name_version
     "sinfo-#{version.major_minor_patch}"
-  end
-
-  livecheck do
-    url :homepage
-    regex(/href=.*?sinfo-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "pkgconf" => :build
