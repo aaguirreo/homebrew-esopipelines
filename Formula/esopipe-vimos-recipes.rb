@@ -5,6 +5,11 @@ class EsopipeVimosRecipes < Formula
   sha256 "e4394926ada4e5f59be3de67d56630bf113943d2398298a8f2b7abf1e908de4e"
   license "GPL-2.0-or-later"
 
+  livecheck do
+    url :homepage
+    regex(/href=.*?vimos-kit-(\d+(?:[.-]\d+)+)\.t/i)
+  end
+
   bottle do
     root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-vimos-recipes-4.1.10"
     sha256 cellar: :any,                 arm64_sequoia: "48c1208a65b37a5f2847f7794bed3c30b208b1580b210f810a91859b8044f7ca"
@@ -15,11 +20,6 @@ class EsopipeVimosRecipes < Formula
 
   def name_version
     "vimos-#{version.major_minor_patch}"
-  end
-
-  livecheck do
-    url :homepage
-    regex(/href=.*?vimos-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "pkgconf" => :build
