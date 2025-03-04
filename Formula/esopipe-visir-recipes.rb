@@ -1,14 +1,9 @@
 class EsopipeVisirRecipes < Formula
   desc "ESO VISIR instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/visir/visir-kit-4.4.5.tar.gz"
-  sha256 "8833896bfc1e85e60a3a7d24c015d2ec5ca81807e908a0ca5a70970347d1aaa0"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/visir/visir-kit-4.4.5-4.tar.gz"
+  sha256 "2741727624db620ae6b2321b52c66a2a113af5c362b873e6b21b373d25030b6c"
   license "GPL-2.0-or-later"
-  revision 2
-
-  def name_version
-    "visir-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -16,18 +11,22 @@ class EsopipeVisirRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-visir-recipes-4.4.5_2"
-    sha256 arm64_sequoia: "9df11f4ffac5f81cee2001d138240bdf7e45d3b03d9b39763362b97177160a6f"
-    sha256 arm64_sonoma:  "0636300a1d6e8bd34e145eab5bed01422a51283f0034c7d905a3328636c2a254"
-    sha256 ventura:       "0cf2fb87f355858423f02e295299d1396729de2786cca5b01fa892da0f7bfb63"
-    sha256 x86_64_linux:  "215be18bb3c1bb9860ad6c1ce95b27310e11a0e7885da43afec49606d0aeff69"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-visir-recipes-4.4.5-4"
+    sha256 arm64_sequoia: "ece1a14894ba41e36ad047d9801620527abfb44a1c897d14647ba0233d3edcc9"
+    sha256 arm64_sonoma:  "04cf9cef023548cce18ca20160b565da6f3d309e49a39303b9dd653d960d6c9e"
+    sha256 ventura:       "2a44f6d3a6b06d134296d2b13b4c5ddb9cd44bbcc9ba6fc43b1ff292f9bfe951"
+    sha256 x86_64_linux:  "3df59c27fc7459bea9fb8fa0c2038dd65b0dddabcbf53ee06220d49accb678e6"
+  end
+
+  def name_version
+    "visir-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -35,8 +34,8 @@ class EsopipeVisirRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}"
       system "make", "install"

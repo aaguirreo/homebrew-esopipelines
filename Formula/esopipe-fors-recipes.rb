@@ -4,11 +4,7 @@ class EsopipeForsRecipes < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/fors/fors-kit-5.6.5-7.tar.gz"
   sha256 "e492be42ae3b96e48a2a3b2981feff8712fb2d616fd1f3f3f42ba243add2a15b"
   license "GPL-2.0-or-later"
-  revision 3
-
-  def name_version
-    "fors-#{version.major_minor_patch}"
-  end
+  revision 4
 
   livecheck do
     url :homepage
@@ -16,19 +12,23 @@ class EsopipeForsRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-fors-recipes-5.6.5-7_3"
-    sha256 arm64_sequoia: "adca530044d63e3c2cbc53911a0ef305fe6ce22969caa960addc111dd651d382"
-    sha256 arm64_sonoma:  "0b8cd0f4b3e6e16ae9f19ef41223c0ff06946c317f2888b1f76306ad50d77b90"
-    sha256 ventura:       "4fa55b946ae6b3aae405bc5f001880f781b040f887b3535330dd6aea12dd826e"
-    sha256 x86_64_linux:  "3899eb2c980ce4b892a96ee2b6d59dc882d125f2b796a5672c9984f8a2ac2ccc"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-fors-recipes-5.6.5-7_4"
+    sha256 arm64_sequoia: "2d0cae62b5a03a0980500f238f3496a409c108a29d60be8f3c13ca1ee90ab50d"
+    sha256 arm64_sonoma:  "28d17c085c80559a3220f2c486c7b8ebb4ae543224d761023130cc93ec60fa40"
+    sha256 ventura:       "9e60119236b280a21b93c05089fa5a7ec78ecc17cb7383228ec7de8dc7b021ab"
+    sha256 x86_64_linux:  "fa48a0af0fd622be26949ede08be26be2b4f365c690ee3d4002d687e2edf92c1"
+  end
+
+  def name_version
+    "fors-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cfitsio@4.2.0"
-  depends_on "cpl@7.3.2"
+  depends_on "cfitsio"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
   depends_on "telluriccorr"
 
   uses_from_macos "curl"
@@ -37,11 +37,11 @@ class EsopipeForsRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cfitsio=#{Formula["cfitsio@4.2.0"].prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cfitsio=#{Formula["cfitsio"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-telluriccorr=#{Formula["telluriccorr"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}"
       system "make", "install"
     end

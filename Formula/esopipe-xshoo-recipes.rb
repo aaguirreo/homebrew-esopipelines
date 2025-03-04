@@ -1,14 +1,9 @@
 class EsopipeXshooRecipes < Formula
   desc "ESO XSHOOTER instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/xshooter/xshoo-kit-3.6.8.tar.gz"
-  sha256 "e50f7172d65de8b8f54fc47a333d49a5fa6db34aabe097bbc1a3449f455ab2b9"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/xshooter/xshoo-kit-3.6.8-6.tar.gz"
+  sha256 "999305051d41378f1eb6816cfe8140f9ed6df5b159a5c7767e1cdaa49a441516"
   license "GPL-2.0-or-later"
-  revision 3
-
-  def name_version
-    "xshoo-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -16,19 +11,23 @@ class EsopipeXshooRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-xshoo-recipes-3.6.8_3"
-    sha256 cellar: :any,                 arm64_sequoia: "e36f1aa18044ffdc2593e3a50799d9a7631422c0d3f0dc6036e9454e3cc1fd25"
-    sha256 cellar: :any,                 arm64_sonoma:  "2e8aafbc7ecb885d927b9674c43304ea6003842630d3621089742268f46885ad"
-    sha256 cellar: :any,                 ventura:       "e4aa6e569da22dfcbc0a68f8f7e3776df979d61d817dfdc5b9de67de423c3946"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f28a809b49fe235fcb3fc956bd86e5ab547cb40a0c660928d6bd68047641d771"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-xshoo-recipes-3.6.8-6"
+    sha256 cellar: :any,                 arm64_sequoia: "7b040dd856280dc249cee1e53028ce91de7db36da3c70b2684453b6e825a7b2e"
+    sha256 cellar: :any,                 arm64_sonoma:  "3d7c73f46e6bf1ae7dc01bf7cc7c32139661b1929c4bcd9a297b93537a3f9d94"
+    sha256 cellar: :any,                 ventura:       "bb77d8e9a7978ab4de2942c05c1ef7e33ce0349712021a37d4ba61bbf32863dd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "09beda85a76ec7fbb66f0a30510345be4d074eb9fd3ee7f0720d773e67329662"
+  end
+
+  def name_version
+    "xshoo-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cfitsio@4.2.0"
-  depends_on "cpl@7.3.2"
+  depends_on "cfitsio"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
   depends_on "telluriccorr"
 
   uses_from_macos "curl"
@@ -37,12 +36,12 @@ class EsopipeXshooRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cfitsio=#{Formula["cfitsio@4.2.0"].prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cfitsio=#{Formula["cfitsio"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}",
                             "--with-telluriccorr=#{Formula["telluriccorr"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
   end

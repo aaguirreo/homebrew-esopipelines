@@ -11,11 +11,11 @@ class MolecfitThirdParty < Formula
   end
 
   bottle do
-    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/molecfit-third-party-1.9.3"
-    sha256 cellar: :any,                 arm64_sequoia: "c06890f289a51a17999a642265b069d1ce31a98381888566c7d7c625c2f12d2f"
-    sha256 cellar: :any,                 arm64_sonoma:  "cc9d1b57c822b78aaa08a1193bc0e36b1d48889a7644860396c6447bf76eaae1"
-    sha256 cellar: :any,                 ventura:       "4d69e1bc0fd19ec99d3da3c07cd74e738fe50f7fe893385eff23f74e75649a31"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bf87ca6e13c6598f326c45e37567268afa5e9249ccbab5edb398387c0ac0b3ed"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/molecfit-third-party-1.9.3"
+    sha256 cellar: :any,                 arm64_sequoia: "7c12534ab69e61ac60b8a06aee4743d505bb7c79e99f0d8b660d8d2548525b97"
+    sha256 cellar: :any,                 arm64_sonoma:  "9dbbff7403171b2890ed54957fce8f47a599ad4f86e4ab87dbd06346f29d3265"
+    sha256 cellar: :any,                 ventura:       "cd3771b699a79e78547c9efb9f68e3a4d3a0061804630bf04e770e6aa4bb2cf8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f5a2b8e9e03487ba97d3b4c6f717b3debb94d802fd8a567c4926ac2ed989af85"
   end
 
   depends_on "gcc"
@@ -28,7 +28,6 @@ class MolecfitThirdParty < Formula
   end
 
   test do
-    # Include a basic test to validate installation
     assert_match "2460672", shell_output("echo \"2024 12 27\" | Gregorian2JD")
   end
 end

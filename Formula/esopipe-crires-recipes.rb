@@ -1,8 +1,8 @@
 class EsopipeCriresRecipes < Formula
   desc "ESO CRIRES instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/crires/crire-kit-2.3.19.tar.gz"
-  sha256 "bb61983ba2c57b45f2d1ebd78f321e12badff824351ace4d4227fa97ead2bbe6"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/crires/crire-kit-2.3.19-5.tar.gz"
+  sha256 "7a1d6fb3aad68142af6adb8e23e2d7172bd7779887dd5123126a3101d12531d3"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,12 +11,11 @@ class EsopipeCriresRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-crires-recipes-2.3.19"
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "bbf23dcabed9b3bb1ffb0e23e04b9b0549d624914a9da4e7c21040552dcf97a0"
-    sha256 cellar: :any,                 arm64_sonoma:  "e3d246f39d19e066f1d98c4a48c645e7057ba418557f14b2bfd77c02b976657e"
-    sha256 cellar: :any,                 ventura:       "2ff6759ca4f5359bc69856a331654c6f96932547e57c446ec5291d38269581f9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bc634158e5c21af4e84aa44a83135781c5030e415d569fd4eb467b3305e65387"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-crires-recipes-2.3.19-5"
+    sha256 cellar: :any,                 arm64_sequoia: "711133fa656d43e521738dc9c235f2d82123399d27afcd21f20df4e5b46a6ffc"
+    sha256 cellar: :any,                 arm64_sonoma:  "2b11d0a19600715f3b7c37c7f8b5bcaee63cd78859e6e8361a2602b690eb4df3"
+    sha256 cellar: :any,                 ventura:       "0d63461b33bc19749ce55e50eded5c02d1059c1f00a590e8cbbaf15135cc49c9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9f9ba0fa9849ffce6b5455fb76c5f763f2771bf06ed36ddc2c8c4d165ae506e3"
   end
 
   def name_version
@@ -24,14 +23,14 @@ class EsopipeCriresRecipes < Formula
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "esorex"
 
   def install
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}"
+                            "--with-cpl=#{Formula["cpl"].prefix}"
       system "make", "install"
     end
   end

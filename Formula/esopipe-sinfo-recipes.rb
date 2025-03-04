@@ -1,8 +1,8 @@
 class EsopipeSinfoRecipes < Formula
   desc "ESO SINFONI instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/sinfoni/sinfo-kit-3.3.5-1.tar.gz"
-  sha256 "15e124020ff7592b6201e13cc40563055050e123857f7cb4fb982e2423db187e"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/sinfoni/sinfo-kit-3.3.6-5.tar.gz"
+  sha256 "d5f170deaf5787a371056cfe12d825f7a67db3a7337c4e025dd5e4fa13cf0432"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,11 +11,11 @@ class EsopipeSinfoRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-sinfo-recipes-3.3.5-1"
-    sha256 cellar: :any,                 arm64_sequoia: "b2d5d2c74f7e3ae1d53e69f92f86f966a952e71f76078d2c7b711467ab38e26a"
-    sha256 cellar: :any,                 arm64_sonoma:  "5042af9f252b1752c7d3b82259b86e82bdf44bef753d9b1c5f03d545459be79a"
-    sha256 cellar: :any,                 ventura:       "ef4f9f6b50866f1b72533b66169ba00d503c2a4f634ace4115123b04f822847b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2e0bfc4563f8b873edd2fb092d4d73833219e270a170d23f61adae414422cc5d"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-sinfo-recipes-3.3.6-5"
+    sha256 cellar: :any,                 arm64_sequoia: "94629229b7506fe0b9e44f81e59f9a34284eb713ccae37252e246bb197482d4f"
+    sha256 cellar: :any,                 arm64_sonoma:  "e6dde92bb4cfd26f8449930f985dc440da9318b0740c94ce443deb3bf7c9230b"
+    sha256 cellar: :any,                 ventura:       "78be20c29b5f0803ad470c0cc1f47292cd3826f55faef553098b54c41de59589"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "496df883a2331af7d1f4acfd4b41cac75fd2a6a331e7c6752a474e0a0fa824c0"
   end
 
   def name_version
@@ -23,10 +23,10 @@ class EsopipeSinfoRecipes < Formula
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -34,10 +34,10 @@ class EsopipeSinfoRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
   end

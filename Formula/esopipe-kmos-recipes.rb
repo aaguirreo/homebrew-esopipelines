@@ -1,14 +1,9 @@
 class EsopipeKmosRecipes < Formula
   desc "ESO KMOS instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/kmos/kmos-kit-4.4.4.tar.gz"
-  sha256 "455b58e777335f59f31e7af56d77d64f54ea8a9f58dedae9851fbf75864de612"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/kmos/kmos-kit-4.4.8-6.tar.gz"
+  sha256 "f2ad85e4699b9a375e2ab923de04fdfcba78f495a0871bc198e0efd31a05c1ae"
   license "GPL-2.0-or-later"
-  revision 3
-
-  def name_version
-    "kmos-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -16,15 +11,19 @@ class EsopipeKmosRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-kmos-recipes-4.4.4_3"
-    sha256 cellar: :any,                 arm64_sequoia: "6b2dff815c41bfe49756570dfbed0c187aba0fb1a7a9c20c1c4ff574ab85c960"
-    sha256 cellar: :any,                 arm64_sonoma:  "476d28e5e902e43928e62dc2ed57e2f5c87d6922a40cfdfd869c9025683cb2d8"
-    sha256 cellar: :any,                 ventura:       "57be292b39ce8c10e929e243425603df6af173ea6c91fe22d672fbc8b101395d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "15aa20360c528437f2aa0cace74ca2028c92f42862130c63386b5099afc5f332"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-kmos-recipes-4.4.8-6"
+    sha256 cellar: :any,                 arm64_sequoia: "f8bfa44357abafde3043cfaca94fa9bbcdb655e3573fbd931e85ac0b8f2e2300"
+    sha256 cellar: :any,                 arm64_sonoma:  "2a350a19845091711ee2b4e5fe368987da922e888c89a0c3a159ed32a9e219ff"
+    sha256 cellar: :any,                 ventura:       "423cb8bef164c35d16ff1086a7264a70a23d5ed82622e729baaf2f9bbe381c5a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d6904d478192679eda9686c2370c59f9a6a0095e72917be158dc9c338d1f388f"
+  end
+
+  def name_version
+    "kmos-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "esorex"
   depends_on "telluriccorr"
 
@@ -32,7 +31,7 @@ class EsopipeKmosRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-telluriccorr=#{Formula["telluriccorr"].prefix}"
       system "make", "install"
       rm bin/"kmos_calib.py"

@@ -1,13 +1,9 @@
 class EsopipeErisRecipes < Formula
   desc "ESO ERIS instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/eris/eris-kit-1.7.0.tar.gz"
-  sha256 "66b7e71f7c27112622dcfba4734b0a1cc06a35c26728ee723c99618990c2281a"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/eris/eris-kit-1.7.0-6.tar.gz"
+  sha256 "1950e6208671565f73136770088f09798d234d4a1d405a2a752bf06b976aab3d"
   license "GPL-2.0-or-later"
-
-  def name_version
-    "eris-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -15,19 +11,23 @@ class EsopipeErisRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-eris-recipes-1.7.0"
-    sha256 cellar: :any,                 arm64_sequoia: "0ad27fcfde2bf337acd8873d60093eb512f758c02316ea6901fb6ee6e29a63ee"
-    sha256 cellar: :any,                 arm64_sonoma:  "3d1832054e86cb78a371b1dcc97ad21f1eeb66a5f4fd5e39324a244df244bb77"
-    sha256 cellar: :any,                 ventura:       "bd4d878839e6990c20a0e065968da45aa32a5aabcfc059ba06d7be53d7f7d1e8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c4dfd59959fcba5fef2284dd83d2e0a13f9453682a2908ae373036d0f3f56b54"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-eris-recipes-1.7.0-6"
+    sha256 cellar: :any,                 arm64_sequoia: "a30ca239bc067ea9e4fa40809b59fdab5a160d55319f85956b62467a84ba5e57"
+    sha256 cellar: :any,                 arm64_sonoma:  "285d8ee6888b48884816ab7a757aa2abb6bc319773cff0629540472280f9987e"
+    sha256 cellar: :any,                 ventura:       "2dfd21b51e5816117f296e40d405773a4495ffa171166419ba8da3fa2853abf3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7af527fe1130af98fe394f0cf20d18a0f089c22456ee2d54206aaa1e4ebdbba3"
+  end
+
+  def name_version
+    "eris-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cfitsio@4.2.0"
-  depends_on "cpl@7.3.2"
+  depends_on "cfitsio"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -35,11 +35,11 @@ class EsopipeErisRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cfitsio=#{Formula["cfitsio@4.2.0"].prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cfitsio=#{Formula["cfitsio"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
   end

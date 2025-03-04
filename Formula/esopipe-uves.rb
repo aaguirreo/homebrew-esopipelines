@@ -1,8 +1,8 @@
 class EsopipeUves < Formula
   desc "ESO UVES instrument pipeline (static data)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
-  sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.10-4.tar.gz"
+  sha256 "0350faaf8d957b71e5f5b951987124c91541dcf41f680210e4d8be547ff49faf"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -10,6 +10,8 @@ class EsopipeUves < Formula
     regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  depends_on "esopipe-detmon-recipes"
+  depends_on "esopipe-esotk"
   depends_on "esopipe-uves-recipes"
 
   def install

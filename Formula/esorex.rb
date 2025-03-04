@@ -1,10 +1,9 @@
 class Esorex < Formula
   desc "Execution Tool for European Southern Observatory pipelines"
   homepage "https://www.eso.org/sci/software/cpl/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/libraries/esorex/esorex-3.13.9.tar.gz"
-  sha256 "609c484c7ac2c3b30cf6dbead25430b05c850f80aa140be3c85ffd104305ebc0"
+  url "https://ftp.eso.org/pub/dfs/pipelines/libraries/esorex/esorex-3.13.10.tar.gz"
+  sha256 "a989f9c6dbd6bbb6a9c7c678da8a3b7ad7a8c7e29c644b97c371579b45957dd6"
   license "GPL-2.0-or-later"
-  revision 2
 
   livecheck do
     url "https://ftp.eso.org/pub/dfs/pipelines/libraries/esorex/"
@@ -12,15 +11,15 @@ class Esorex < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esorex-3.13.9_2"
-    sha256 arm64_sequoia: "ab4afae89a5ec263f686a3ef3bac64a202ab393f76fd43420dc36492f5f1ceb4"
-    sha256 arm64_sonoma:  "50b1f55c30a78ef6362ead332577a11f372b86fbff30febf20117ae8c64fd468"
-    sha256 ventura:       "63055b75f87eadb9f2f64fa18a52ebe804cf954078929605ca06b83fb504ffd2"
-    sha256 x86_64_linux:  "60fdf7868fcac1e4f3fb84019bb06119a13945121e4e17c83e1fe9d7c922987e"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esorex-3.13.10"
+    sha256 arm64_sequoia: "1ec713caeb645c77ee1a1e8f940a25cefd46116812dd736aaa7a52ab78b561bc"
+    sha256 arm64_sonoma:  "05cdf3638c6c1de64b134e8b817b85af258728c0b7da13d4a9d93657b07ef99b"
+    sha256 ventura:       "6fcfe65b6f02eb5a675f22510756009b9cd1e42779b1b67a87ab1ae20dda2b16"
+    sha256 x86_64_linux:  "14183d8d2a7135c8e113a2e4ea7675148351ade9f6f4d2455cd0b0bf7452a390"
   end
 
-  depends_on "cpl@7.3.2"
-  depends_on "gsl@2.6"
+  depends_on "cpl"
+  depends_on "gsl"
   depends_on "libffi"
 
   def install
@@ -28,8 +27,8 @@ class Esorex < Formula
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}",
-                          "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                          "--with-gsl=#{Formula["gsl@2.6"].prefix}",
+                          "--with-cpl=#{Formula["cpl"].prefix}",
+                          "--with-gsl=#{Formula["gsl"].prefix}",
                           "--with-libffi=#{Formula["libffi"].prefix}",
                           "--with-included-ltdl"
     system "make", "install"

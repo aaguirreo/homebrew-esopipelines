@@ -3,8 +3,8 @@ class Pyesorex < Formula
 
   desc "ESO Recipe Executor Tool for CPL/PyCPL recipes"
   homepage "https://www.eso.org/sci/software/pycpl/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/libraries/pyesorex/pyesorex-1.0.0.tar.gz"
-  sha256 "248634872bf094bf20063ca1662e0c62b9a4cfd0119a6447de176ea7fa63a930"
+  url "https://ftp.eso.org/pub/dfs/pipelines/libraries/pyesorex/pyesorex-1.0.1.tar.gz"
+  sha256 "13b84af0e696fd11c624b84cba5adf87409a74a593716fc7a3a57be0ce3f1562"
   license "GPL-2.0-or-later"
   revision 1
 
@@ -14,11 +14,11 @@ class Pyesorex < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/pyesorex-1.0.0_1"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e1365fd264eb14ff737258600fbcefefcd1dd005900cf790829b433af34e4c5c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "40b03f19f87718122a460ed97e832fcfac210204d8f051e4b4e9f6ff6db85d24"
-    sha256 cellar: :any_skip_relocation, ventura:       "cb733e97bdc021c2588573bcf83fdcc1dfa05432b4130e22d7af56846e3347c8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3883b6f9ec737b8103dd5057ad6ef8e28b2c8014d312b638296e94f7c8985c80"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/pyesorex-1.0.1_1"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2b11a9defc93a5fb5bb5112f7512eeb7421431411a05ae48d722d2b377413c3d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "56ff5ee6d094116d59641e992eac7c041b86c2e1a0a0b3c28f15cdd8b2a28bd2"
+    sha256 cellar: :any_skip_relocation, ventura:       "68603c7043a47348e7c1d84b74ac65da463c5c40b8fe71f9a17cccc952197457"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c860405ddf420d328e1db15bda39da3de0006dec1db7845b449920c1ac39465c"
   end
 
   depends_on "pycpl"

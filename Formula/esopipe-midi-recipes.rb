@@ -1,22 +1,30 @@
 class EsopipeMidiRecipes < Formula
   desc "ESO MIDI instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/midi/midi-kit-2.9.6-1.tar.gz"
-  sha256 "f57b483a118fda01335723f51e2eca4c795fa64d3b16dcdcd236b297ea2159d7"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/midi/midi-kit-2.9.6-6.tar.gz"
+  sha256 "f9975ab72512196f8fdd65850af5714d3900c803f875064b76b8b79e2cd98fff"
   license "GPL-2.0-or-later"
-
-  def name_version
-    "midi-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
     regex(/href=.*?midi-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-midi-recipes-2.9.6-6"
+    sha256 arm64_sequoia: "bd6c48d51ca852533735e4ebdca1493a997f9e7686aef1c97a96c22d75d970d4"
+    sha256 arm64_sonoma:  "d9c613d7da916a595e0f40c09c1e302eebc86af8c4d3e3435fab8b9c7315337d"
+    sha256 ventura:       "617e6eeae32afa437f324e8b650d40f92cc4f8a970de2a5495c8781cac0f9027"
+    sha256 x86_64_linux:  "e3b70272ac29fa2acdc72a8de68a83ec956cc8572f4ea883ca6c993051bed46f"
+  end
+
+  def name_version
+    "midi-#{version.major_minor_patch}"
+  end
+
   depends_on "pkgconf" => :build
-  depends_on "cfitsio@4.2.0"
-  depends_on "cpl@7.3.2"
+  depends_on "cfitsio"
+  depends_on "cpl"
   depends_on "esorex"
 
   uses_from_macos "curl"
@@ -25,8 +33,8 @@ class EsopipeMidiRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cfitsio=#{Formula["cfitsio@4.2.0"].prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}"
+                            "--with-cfitsio=#{Formula["cfitsio"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}"
       system "make", "install"
     end
   end

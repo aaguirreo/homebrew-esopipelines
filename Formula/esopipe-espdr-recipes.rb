@@ -1,13 +1,9 @@
 class EsopipeEspdrRecipes < Formula
   desc "ESO ESPRESSO instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/espresso/espdr-kit-3.3.0.tar.gz"
-  sha256 "4ec59051a56b895c6d2be921eff30c7532ed7d05ab9fb217cd88abf9941387c4"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/espresso/espdr-kit-3.3.0-4.tar.gz"
+  sha256 "72a3b6fd4edcb1f7fe00f4188bb228ff438e92789ec090b63b7bfc5a02ebb3b9"
   license "GPL-2.0-or-later"
-
-  def name_version
-    "espdr-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -15,18 +11,22 @@ class EsopipeEspdrRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-espdr-recipes-3.3.0"
-    sha256 arm64_sequoia: "1169f7c9da79789b1c889524862921b0deebd5462feff4af68eb46c66a27f3cb"
-    sha256 arm64_sonoma:  "796dafcaa82593d2eac87018126bcb5882ef06a1bdc818e44b413f054fc561a9"
-    sha256 ventura:       "16775971ce95559ec6364c1bd58f6d76cc0f34631109de56d8053b153d83dbd8"
-    sha256 x86_64_linux:  "13537d814f6928a80492c6e8a0680eac7851c9188ae2c83c92a68540b7984021"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-espdr-recipes-3.3.0-4"
+    sha256 arm64_sequoia: "b7f9b41425e68b3d4b1ff2c0edac2b477a0ffca56024ec0936bee6bbcf3d04aa"
+    sha256 arm64_sonoma:  "433ef1c14b261e3eddf704c44c0a338827547b4bbc28bb9fd29ffee2dc34cca1"
+    sha256 ventura:       "828d874ac6bf0100dbf186625ccee74211fa977bcf6c301f60cef4d69ef86d58"
+    sha256 x86_64_linux:  "0a46bfc210753a02d5ab55ff675e3e8fac87433ba099c5a3bafeafed022d0837"
+  end
+
+  def name_version
+    "espdr-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -34,8 +34,8 @@ class EsopipeEspdrRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}"
       system "make", "install"

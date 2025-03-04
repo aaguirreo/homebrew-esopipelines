@@ -1,8 +1,8 @@
 class EsopipeIsaacRecipes < Formula
   desc "ESO ISAAC instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/isaac/isaac-kit-6.2.5-1.tar.gz"
-  sha256 "bed2508b8a06cf943b93ca6f2078a55c8e8acec33c92dfc5aa297d5e8f1483a5"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/isaac/isaac-kit-6.2.5-6.tar.gz"
+  sha256 "13293747b772034dacc3ba548ce1cb90d812c431baec781be769f3722452e29a"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,11 +11,11 @@ class EsopipeIsaacRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-isaac-recipes-6.2.5-1"
-    sha256 cellar: :any,                 arm64_sequoia: "4a4983fe354e7dbe0017c202dc0611c0c073b6957d8ea37f1ff6f7a951cfd5df"
-    sha256 cellar: :any,                 arm64_sonoma:  "5b73d44ce42f822739b73dcc6ab5838bc541cad8cbaeedda0afda184762229eb"
-    sha256 cellar: :any,                 ventura:       "7eacbcc0ed71e5b6934bcfea8e7b9dbd752a356580b4e5a62d0dfa76120f6c37"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "faa96d65a0b2f697f6bbf4cf67401c86f6f2a72a767651bdb16d713c17f4e578"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-isaac-recipes-6.2.5-6"
+    sha256 cellar: :any,                 arm64_sequoia: "a57f109fa685e8503f086ae90d711b15e3f04dcbc100ab63eccd4d728fa647a6"
+    sha256 cellar: :any,                 arm64_sonoma:  "265163a5ecc6338fc76d0f98420c2c5d07292c0db9540a7d5eab08db10899d56"
+    sha256 cellar: :any,                 ventura:       "b3ea3ccf61771a090ca961dff0762c6ced458a5d0409d7c88450f6ffc8476821"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dbced2fc142648f6ffb6f3f6c2cf3327abbeb71fe15a1908daf204c05fe6f045"
   end
 
   def name_version
@@ -23,9 +23,9 @@ class EsopipeIsaacRecipes < Formula
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -33,8 +33,8 @@ class EsopipeIsaacRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-cpl=#{Formula["cpl"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
   end

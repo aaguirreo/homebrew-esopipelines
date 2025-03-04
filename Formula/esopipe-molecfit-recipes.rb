@@ -1,14 +1,9 @@
 class EsopipeMolecfitRecipes < Formula
   desc "ESO MOLECFIT instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/molecfit/molecfit-kit-4.3.3.tar.gz"
-  sha256 "1b33df7da828d9be81fb54ad5251e236ffa8e53ceaa43c746a08b28ec8e84fc2"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/molecfit/molecfit-kit-4.3.3-5.tar.gz"
+  sha256 "749b5b31c7f6c29c7904da8145fbacebe3add0ab7d6ef8cf9d3b428df20c5dd0"
   license "GPL-2.0-or-later"
-  revision 2
-
-  def name_version
-    "molecfit-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -16,15 +11,19 @@ class EsopipeMolecfitRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-molecfit-recipes-4.3.3_2"
-    sha256 cellar: :any,                 arm64_sequoia: "41987c0c294688d3d652e85cf6d0da59890f2f0fd6c7d1afa70a0f00b9b00e1d"
-    sha256 cellar: :any,                 arm64_sonoma:  "edef7eda282f902bd4a4ea193e3de2b7d6be5c1f6ab0374acbbc8797a2248032"
-    sha256 cellar: :any,                 ventura:       "a44de498b6ee4aff90dadc7330bc9e32edc6e8a44a7bceb3b937bedd7663bc2b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9200c67023053c53ce6781c257db158150e99d7f6c42fb09cc1c16fab54b7ff1"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-molecfit-recipes-4.3.3-5"
+    sha256 cellar: :any,                 arm64_sequoia: "2924b15d228982b622eeced4bfedc969c92319a9596aa6ce929179a31c223a15"
+    sha256 cellar: :any,                 arm64_sonoma:  "9e31dcb5acd63e0bdc8db70acc806833466ef0165613d08a4664c0d1d4710176"
+    sha256 cellar: :any,                 ventura:       "b744c4772f1b94a89a6cdee8cc6bfd9e8af6553c2f351f1478c64b7009b0c80b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9372e11a869512c0707e2c14957ed81b3880fcd48ef4443aeeb32f2866eb2e25"
+  end
+
+  def name_version
+    "molecfit-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "esorex"
   depends_on "telluriccorr"
 
@@ -32,7 +31,7 @@ class EsopipeMolecfitRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-telluriccorr=#{Formula["telluriccorr"].prefix}"
       system "make", "install"
     end

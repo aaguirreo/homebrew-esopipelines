@@ -1,13 +1,9 @@
 class EsopipeNirpsRecipes < Formula
   desc "ESO NIRPS instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/nirps/nirps-kit-3.3.0.tar.gz"
-  sha256 "efb541607aadfb22cbba8cfc5c581c8c4a48ae6ea8b8b92080eb36b615b80e51"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/nirps/nirps-kit-3.3.0-4.tar.gz"
+  sha256 "483b4fe728f359aa56a2096abf82b4a167cd255aa9e2510e92e48aa82037e737"
   license "GPL-2.0-or-later"
-
-  def name_version
-    "nirps-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -15,18 +11,22 @@ class EsopipeNirpsRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-nirps-recipes-3.3.0"
-    sha256 arm64_sequoia: "dc8d4043d60fae7ac149d9c136563c6eeca44c05f08a1d01f689e48282ac9b33"
-    sha256 arm64_sonoma:  "4392b37039f62c2627d3d07aad45241e175d826f0472db08ce80f872e304dc0a"
-    sha256 ventura:       "a760de089bf59060baabf7a1f14515cef61f8796fa5fef15de1988f66e82da4e"
-    sha256 x86_64_linux:  "9bb1e0a3a023f4f5fee490f807a24f0fb62b128cc414c6702f653f81fecca91d"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-nirps-recipes-3.3.0-4"
+    sha256 arm64_sequoia: "f8ce10e8b7e1519a529cd4e4ca31011c3104fdfd9684be6c6d9aa8c5cfdd4ec4"
+    sha256 arm64_sonoma:  "09c4f29055e1af7ab7180f01b949f32b06bec61885faf88d603a86a927048b80"
+    sha256 ventura:       "9f2adf5d23e9ba62a21162056539c754605a4a08c73c648f407caeadf04a08d4"
+    sha256 x86_64_linux:  "5b69bd0d8e70c07da0c1e3d29bae63b893f5a71aedf1712de40adf38558158b4"
+  end
+
+  def name_version
+    "nirps-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -34,8 +34,8 @@ class EsopipeNirpsRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}"
       system "make", "install"

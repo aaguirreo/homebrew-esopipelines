@@ -1,14 +1,9 @@
 class EsopipeHawkiRecipes < Formula
   desc "ESO HAWKI instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/hawki/hawki-kit-2.5.8.tar.gz"
-  sha256 "8c5640b1ea05d790ab708169c303fa43a143002b295a3b870c4300d49cd6ff5c"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/hawki/hawki-kit-2.5.8-4.tar.gz"
+  sha256 "603d27a16dc2c2d854efcfa4deea56afc59eb78f85ebfa369c8bb95d131fe2fb"
   license "GPL-2.0-or-later"
-  revision 3
-
-  def name_version
-    "hawki-#{version.major_minor_patch}"
-  end
 
   livecheck do
     url :homepage
@@ -16,24 +11,28 @@ class EsopipeHawkiRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-hawki-recipes-2.5.8_3"
-    sha256 cellar: :any,                 arm64_sequoia: "8a9f51edc5949ca6b804ea07f83ed280a665765e1fb15a04436b6aa8b72d364e"
-    sha256 cellar: :any,                 arm64_sonoma:  "cb233d3a53c8ab683cddd2eca2cdaaefd2a6358f56e1b0b3b35557e249592ff5"
-    sha256 cellar: :any,                 ventura:       "2bfd3b3ca24e6b2664a39a24ab2c6e56e4475450a0979c6bd3246a2179dda53d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "93f097facc7cd17da7e8308716a6f7efcfccf0e43097a2256cc29798dfce14c6"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-hawki-recipes-2.5.8-4"
+    sha256 cellar: :any,                 arm64_sequoia: "1e93eb8e2b89eca02398fc6e33b02cb7c9668d1881f6a50d50eb3156a7f9d302"
+    sha256 cellar: :any,                 arm64_sonoma:  "061cfff428259a8a0eaa665ff42bb8b070e86d3f1d44c0be205cc7006f09f010"
+    sha256 cellar: :any,                 ventura:       "8fb9333fcaf2bc33829efc1fa7b690d552c8c05add4b1fa599d614961e523ed6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5b9898b0722720927965e8894bcc09896bcbd88e283faa86fa26ae6bea7d0a9d"
+  end
+
+  def name_version
+    "hawki-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cpl@7.3.2"
+  depends_on "cpl"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   def install
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-cpl=#{Formula["cpl"].prefix}",
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
   end

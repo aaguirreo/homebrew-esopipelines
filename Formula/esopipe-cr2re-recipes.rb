@@ -4,11 +4,7 @@ class EsopipeCr2reRecipes < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/cr2res/cr2re-kit-1.4.4.tar.gz"
   sha256 "bd4a4d1025ea98ed5372680f877c3b20521109600436c5621e876e994f6f6152"
   license "GPL-2.0-or-later"
-  revision 2
-
-  def name_version
-    "cr2re-#{version.major_minor_patch}"
-  end
+  revision 3
 
   livecheck do
     url :homepage
@@ -16,19 +12,23 @@ class EsopipeCr2reRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-cr2re-recipes-1.4.4_2"
-    sha256 cellar: :any,                 arm64_sequoia: "2914f3170a90c7e92b7ce45cb81c09b6c98162e292f042ed8264a469ec9b7f57"
-    sha256 cellar: :any,                 arm64_sonoma:  "eafa3f17000fb060065a95fd79412598ee3fb18b25d45e6a3ae0f509f330d444"
-    sha256 cellar: :any,                 ventura:       "72524b930936c6d6f83e8960bf07c04d62d629914a20d8eb257ee48079cba377"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "06ddc9e4e216326bfe000bc92b0642125c72b90429c184c24fb62ad314a9c0e2"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-cr2re-recipes-1.4.4_3"
+    sha256 cellar: :any,                 arm64_sequoia: "23c29b3613203fc5c712576f8028df4dadffddf9a981730de0ad19d638f6ac56"
+    sha256 cellar: :any,                 arm64_sonoma:  "35c588e4e76cd88bf4de4228c588815b45a2ac0b21f98ffbbefc7b908bf7bfbe"
+    sha256 cellar: :any,                 ventura:       "29599e712936376978557b053aa7cb5a788158f34577dc9906db67200bb8a0a4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8e09509a49f5b9af15eae775feb404528e43801b8fb861c014e4a9690c73b8fc"
+  end
+
+  def name_version
+    "cr2re-#{version.major_minor_patch}"
   end
 
   depends_on "pkgconf" => :build
-  depends_on "cfitsio@4.2.0"
-  depends_on "cpl@7.3.2"
+  depends_on "cfitsio"
+  depends_on "cpl"
   depends_on "erfa"
   depends_on "esorex"
-  depends_on "gsl@2.6"
+  depends_on "gsl"
 
   uses_from_macos "curl"
 
@@ -36,11 +36,11 @@ class EsopipeCr2reRecipes < Formula
     system "tar", "xf", "#{name_version}.tar.gz"
     cd name_version.to_s do
       system "./configure", "--prefix=#{prefix}",
-                            "--with-cfitsio=#{Formula["cfitsio@4.2.0"].prefix}",
-                            "--with-cpl=#{Formula["cpl@7.3.2"].prefix}",
+                            "--with-cfitsio=#{Formula["cfitsio"].prefix}",
+                            "--with-cpl=#{Formula["cpl"].prefix}",
                             "--with-erfa=#{Formula["erfa"].prefix}",
                             "--with-curl=#{Formula["curl"].prefix}",
-                            "--with-gsl=#{Formula["gsl@2.6"].prefix}"
+                            "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
     rm_r bin
