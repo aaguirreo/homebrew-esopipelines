@@ -11,11 +11,11 @@ class EsopipeMolecfitRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-molecfit-recipes-4.3.3-5"
-    sha256 cellar: :any,                 arm64_sequoia: "2924b15d228982b622eeced4bfedc969c92319a9596aa6ce929179a31c223a15"
-    sha256 cellar: :any,                 arm64_sonoma:  "9e31dcb5acd63e0bdc8db70acc806833466ef0165613d08a4664c0d1d4710176"
-    sha256 cellar: :any,                 ventura:       "b744c4772f1b94a89a6cdee8cc6bfd9e8af6553c2f351f1478c64b7009b0c80b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9372e11a869512c0707e2c14957ed81b3880fcd48ef4443aeeb32f2866eb2e25"
+    root_url "https://github.com/aaguirreo/homebrew-esopipelines/releases/download/esopipe-molecfit-recipes-4.3.3-6"
+    sha256 cellar: :any,                 arm64_sequoia: "3d79a198a5e71e507d82ef19f0e1e0b9c830916a99e2c07608c741cc357f16c2"
+    sha256 cellar: :any,                 arm64_sonoma:  "53c6cf8eee47b939425e3923650f3ac4aab12df2cf23541e2cbf48dac76a4a33"
+    sha256 cellar: :any,                 ventura:       "ec76561619aff8d4712da466e582ea80d5100958337207579ec1a7addddf4517"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "30e2f3f390dace444cd26ba91aa7a2e9967ef7ecb9fc0116af9c6520f9b103f3"
   end
 
   def name_version
