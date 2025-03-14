@@ -1,8 +1,8 @@
 class EsopipeDetmonRecipes < Formula
   desc "ESO DETMON instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/detmon/detmon-kit-1.3.14-4.tar.gz"
-  sha256 "35d1b37cd349bb786bf46fbf1e1f51dce90549ac5ecdcf8a6362e34798d9bf6a"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/detmon/detmon-kit-1.3.15-2.tar.gz"
+  sha256 "bfba279c5c49dce019727453cb72ec240464976950f75ef7dab63727f4c44853"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,11 +11,11 @@ class EsopipeDetmonRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-detmon-recipes-1.3.14-4"
-    sha256 cellar: :any,                 arm64_sequoia: "f46ea44937fa5b21622083c7433eae7370ee7b009fb2b033459356a92221125c"
-    sha256 cellar: :any,                 arm64_sonoma:  "1e74aaa1c710d2e59fb493f56d4f11696c7c8a24151670c0b2823770046160ff"
-    sha256 cellar: :any,                 ventura:       "a4b79dae64920fc7234e69ee1e81431d376718e3181a294851b88cc81064beb5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "72a3263b00ae4c32065df26f213eb43c6942c02dc323c901736c8c1cc7c453b0"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-detmon-recipes-1.3.15-2"
+    sha256 cellar: :any,                 arm64_sequoia: "5b3d220e1fa5abb95db8a787aac516ee806c5a2a23611b045f5e6e39d93e785c"
+    sha256 cellar: :any,                 arm64_sonoma:  "7840531e9b0595569949bf2d5414284b99855ef350f3d1669ff7056a880a9c90"
+    sha256 cellar: :any,                 ventura:       "cd57e60a6163bf1e74d70bda0faac4a1fc7417291da678f32d62eac3d53429c9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "faffbb2ea8fddf3137e349aafab2de62f42bdf393c3e7e722c0b7ba16e6b7327"
   end
 
   def name_version

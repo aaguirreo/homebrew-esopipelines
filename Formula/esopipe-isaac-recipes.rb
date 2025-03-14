@@ -1,8 +1,8 @@
 class EsopipeIsaacRecipes < Formula
   desc "ESO ISAAC instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/isaac/isaac-kit-6.2.5-6.tar.gz"
-  sha256 "13293747b772034dacc3ba548ce1cb90d812c431baec781be769f3722452e29a"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/isaac/isaac-kit-6.2.5-7.tar.gz"
+  sha256 "955ed0d28433404569e0f5c5f3dffbf05af7bd42147b6bac2b2a1c64c9efeec0"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,11 +11,11 @@ class EsopipeIsaacRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-isaac-recipes-6.2.5-6"
-    sha256 cellar: :any,                 arm64_sequoia: "a57f109fa685e8503f086ae90d711b15e3f04dcbc100ab63eccd4d728fa647a6"
-    sha256 cellar: :any,                 arm64_sonoma:  "265163a5ecc6338fc76d0f98420c2c5d07292c0db9540a7d5eab08db10899d56"
-    sha256 cellar: :any,                 ventura:       "b3ea3ccf61771a090ca961dff0762c6ced458a5d0409d7c88450f6ffc8476821"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dbced2fc142648f6ffb6f3f6c2cf3327abbeb71fe15a1908daf204c05fe6f045"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-isaac-recipes-6.2.5-7"
+    sha256 cellar: :any,                 arm64_sequoia: "46f385c9940ea6e9862f94d6a085f5245fbfb4c994c67bed742499d204c0e082"
+    sha256 cellar: :any,                 arm64_sonoma:  "eed5dd0372d54b828597a3c35f0adee78a8d8010467410dfa409269a4505080b"
+    sha256 cellar: :any,                 ventura:       "0723033bda314ff7a85a7952a4246fd5c1f9f8d9af70929cf4e8861f147d5bea"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "17199654de028659125003f3126be9c98e1795055fe9d792c4dc57bd91d8189c"
   end
 
   def name_version

@@ -1,8 +1,8 @@
 class EsopipeEspdaRecipes < Formula
   desc "ESO ESPRESSO-DAS instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/espresso-das/espda-kit-1.3.8-4.tar.gz"
-  sha256 "74a5c1cc07a6b5ad8aa832760e632483cabefc5483db470e34dc308f25c4a67e"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/espresso-das/espda-kit-1.4.0-3.tar.gz"
+  sha256 "7b4a07376cc9c4660fac012bdfea1b04915d8873608a9a7180b5a54dadaac9c5"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -11,11 +11,11 @@ class EsopipeEspdaRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-espda-recipes-1.3.8-4"
-    sha256 cellar: :any,                 arm64_sequoia: "a69f00092c9e78be4aeaf0e7dffd9e3497ca0df7c198e5ce240b2cd167066836"
-    sha256 cellar: :any,                 arm64_sonoma:  "df35e4d74d0e79432e337a9c0de2903ee5247629409b4f74434bd3a56aa94934"
-    sha256 cellar: :any,                 ventura:       "228d193c8ef68b2e82b88240eac26bb4241d813a28880ed76798d737863d2af2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "97f01ddc9adfac94495238a25b949aa3f5ca66fbf54e5a3ace9fbc030cb88c4e"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-espda-recipes-1.4.0-3"
+    sha256 cellar: :any,                 arm64_sequoia: "d7db270d8c61f20eeb716ad6c6116e2842d9186fa73cce5eb2956774b4d971fe"
+    sha256 cellar: :any,                 arm64_sonoma:  "086c4cd8e7cee01865dacaa1fdc0ef4d194898d8fa2050e56ab107a386089325"
+    sha256 cellar: :any,                 ventura:       "e7b5dbe117a864e10f21445a9b70afa45fff9837f2bf01a4f8498038126c2fd0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a3c5d316698fa4e74e981dcb376feea7c53636b44761654aea898a19fb363c9e"
   end
 
   def name_version

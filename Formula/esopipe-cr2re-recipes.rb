@@ -1,10 +1,9 @@
 class EsopipeCr2reRecipes < Formula
   desc "ESO CR2RES instrument pipeline (recipe plugins)"
   homepage "https://www.eso.org/sci/software/pipe_aem_table.html"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/cr2res/cr2re-kit-1.4.4.tar.gz"
-  sha256 "bd4a4d1025ea98ed5372680f877c3b20521109600436c5621e876e994f6f6152"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/cr2res/cr2re-kit-1.6.7.tar.gz"
+  sha256 "f2ff405637b050c50f4d9ab1423f044be3d5b2a2b307069d46dde68ee4df13e4"
   license "GPL-2.0-or-later"
-  revision 3
 
   livecheck do
     url :homepage
@@ -12,11 +11,11 @@ class EsopipeCr2reRecipes < Formula
   end
 
   bottle do
-    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-cr2re-recipes-1.4.4_3"
-    sha256 cellar: :any,                 arm64_sequoia: "23c29b3613203fc5c712576f8028df4dadffddf9a981730de0ad19d638f6ac56"
-    sha256 cellar: :any,                 arm64_sonoma:  "35c588e4e76cd88bf4de4228c588815b45a2ac0b21f98ffbbefc7b908bf7bfbe"
-    sha256 cellar: :any,                 ventura:       "29599e712936376978557b053aa7cb5a788158f34577dc9906db67200bb8a0a4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8e09509a49f5b9af15eae775feb404528e43801b8fb861c014e4a9690c73b8fc"
+    root_url "https://github.com/eso/homebrew-pipelines/releases/download/esopipe-cr2re-recipes-1.6.7"
+    sha256 cellar: :any,                 arm64_sequoia: "f2498d97af0ca60b0872971066c63c4a649818f8bf50e6c2273c6494db0fc0ce"
+    sha256 cellar: :any,                 arm64_sonoma:  "03d68a11a7012e4bc3231350cf7dcf08819326821d0015c7000af28ab2ba95a7"
+    sha256 cellar: :any,                 ventura:       "0da135e0f3656633dae5bbd568963ec72c3fef0f7df38f54a98f786765e388fb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "577b0bb1c87c4fe7f4742968491e19aa30c7284452e778db58369373697b54da"
   end
 
   def name_version
